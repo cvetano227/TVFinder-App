@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Shows</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo"><span class="logo-span">TV</span>Finder</div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Popular</a>
+        <a href="#">Genres</a>
+      </nav>
+    </header>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover TV Shows</h1>
+        <p>Search and explore thousands of series from TVMaze API</p>
+
+        <div class="hero-actions">
+          <input type="text" placeholder="Search shows..." />
+          <button>Search</button>
+        </div>
+      </div>
+    </section>
+    <div id="shows-container"></div>
+
+    <script defer src="script.js"></script>
+  </body>
+</html>
