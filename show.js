@@ -79,7 +79,7 @@ function renderEpisodes(episodes) {
                 <img src="${ep.image?.medium || ""}" />
 
                 <div class="episode-content">
-                  <div class="episode-number">Ep ${ep.number}</div>
+                  <div class="episode-info"><div class ="episode-number">Ep ${ep.number}</div><div class="episode-runtime">${ep.runtime || "N/A"} min</div></div>
                   <h3>${ep.name}</h3>
                   <p>${
                     ep.summary

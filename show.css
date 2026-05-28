@@ -222,6 +222,10 @@ body {
 }
 
 /* BADGE */
+.episode-info {
+  display: flex;
+  gap: 8px;
+}
 .episode-number {
   font-size: 12px;
   padding: 4px 10px;
@@ -229,6 +233,16 @@ body {
 
   background: rgba(215, 38, 56, 0.15);
   color: #ff4d5a;
+
+  width: fit-content;
+}
+.episode-runtime {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 
   width: fit-content;
 }
