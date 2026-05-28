@@ -10,7 +10,6 @@ async function getShows() {
 
   allShows = shows;
   renderShows(allShows);
-  console.log(allShows);
 }
 
 function renderShows(shows) {
@@ -21,6 +20,8 @@ function renderShows(shows) {
     return;
   }
 
+  let html = "";
+
   shows.forEach((show) => {
     let rating = "";
 
@@ -30,7 +31,7 @@ function renderShows(shows) {
       rating += `<i class="fa fa-star"></i>`;
     }
 
-    showsContainer.innerHTML += `
+    html += `
       <div class="show">
         <img src="${show.image?.medium || ""}" alt="${show.name}" />
 
@@ -52,6 +53,29 @@ function renderShows(shows) {
       </div>
     `;
   });
+
+  showsContainer.innerHTML = html;
+
+  observeShows();
+}
+
+function observeShows() {
+  const cards = document.querySelectorAll(".show");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    },
+  );
+
+  cards.forEach((card) => observer.observe(card));
 }
 
 function filterShows() {

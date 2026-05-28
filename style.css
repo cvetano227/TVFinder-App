@@ -130,7 +130,7 @@ body {
   max-width: 600px;
 }
 
-/* ================= SEARCH BAR (UPDATED) ================= */
+/* ================= SEARCH BAR ================= */
 .hero-actions {
   display: flex;
   justify-content: center;
@@ -201,19 +201,27 @@ body {
     linear-gradient(to bottom, #0b0c10, #07080c 60%, #000);
 }
 
-/* ================= CARD ================= */
+/* ================= CARD (FIXED ANIMATION) ================= */
 .show {
   display: flex;
   flex-direction: column;
   border-radius: 16px;
   background: #141414;
   overflow: hidden;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+
   border: 1px solid rgba(255, 255, 255, 0.05);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
 }
 
+.show.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hover */
 .show:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
