@@ -46,70 +46,177 @@ body {
   opacity: 1;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (NETFLIX STYLE UPGRADE) ================= */
 .hero {
   width: 100%;
-  min-height: 380px;
+  min-height: 70vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
-  background: radial-gradient(circle at top, #d72638, #111 60%);
+
+  padding: 100px 20px 80px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(215, 38, 56, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    ),
+    linear-gradient(to bottom, #0b0c10, #07080c 60%, #000);
 }
 
+/* cinematic dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.85)
+  );
+  z-index: 1;
+}
+
+/* subtle animated glow */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(215, 38, 56, 0.15);
+  filter: blur(140px);
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* CONTENT WRAPPER */
 .hero-content {
-  max-width: 750px;
+  max-width: 850px;
   text-align: center;
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
+/* TITLE (big cinematic feel) */
 .hero h1 {
-  font-size: 52px;
-  margin: 0 0 10px;
-  letter-spacing: -1px;
+  font-size: 64px;
+  margin: 0;
+  letter-spacing: -2px;
+  font-weight: 700;
+
+  background: linear-gradient(90deg, #fff, #d72638);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* SUBTITLE */
 .hero p {
   font-size: 18px;
-  opacity: 0.8;
-  margin-bottom: 25px;
+  opacity: 0.75;
+  margin: 0 0 10px;
+  max-width: 600px;
 }
 
-/* search */
+/* SEARCH WRAPPER */
 .hero-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
+
+  width: 100%;
+  flex-wrap: wrap;
 }
 
+/* INPUT (Netflix-style search bar) */
 .hero-actions input {
-  width: 65%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
+  width: min(600px, 80%);
+  padding: 16px 18px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+
+  font-size: 15px;
   outline: none;
-  font-size: 14px;
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.2s ease;
 }
 
+.hero-actions input:focus {
+  border-color: rgba(215, 38, 56, 0.6);
+  box-shadow: 0 0 0 3px rgba(215, 38, 56, 0.2);
+}
+
+/* PLACEHOLDER */
+.hero-actions input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* BUTTON */
 .hero-actions button {
-  padding: 14px 18px;
+  padding: 16px 20px;
   border: none;
-  border-radius: 12px;
-  background-color: #d72638;
+  border-radius: 14px;
+
+  background: #d72638;
   color: white;
+
+  font-weight: 600;
+  font-size: 14px;
+
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s ease;
+
+  white-space: nowrap;
 }
 
 .hero-actions button:hover {
-  background-color: #b91f2f;
+  background: #b91f2f;
+  transform: translateY(-2px);
 }
 
+.hero-actions button:active {
+  transform: translateY(0);
+}
 /* ================= SHOW GRID ================= */
 #shows-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 22px;
   padding: 30px;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(215, 38, 56, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    ),
+    linear-gradient(to bottom, #0b0c10, #07080c 60%, #000);
 }
 
 /* ================= CARD ================= */
