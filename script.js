@@ -64,7 +64,6 @@ function filterShows() {
   renderShows(filtered);
 }
 
-searchInput.addEventListener("input", filterShows);
 searchButton.addEventListener("click", filterShows);
 
 searchInput.addEventListener("keydown", (e) => {
