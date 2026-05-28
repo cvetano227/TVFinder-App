@@ -69,7 +69,7 @@ function renderEpisodes(episodes) {
     block.classList.add("season-block");
 
     block.innerHTML = `
-      <h2 class="season-title">Season ${season}</h2>
+      <h3 class="season-title">Season ${season}</h3>
 
       <div class="episodes-grid">
         ${grouped[season]
@@ -130,8 +130,8 @@ async function getCast(id) {
               <div class="cast-info">
                 <h3>${person.person.name}</h3>
                 <p>${person.character?.name || "Unknown Character"}</p>
+                <a class="btn cast-btn" onclick="window.open('${person.person.url}', '_blank')">View Profile</a>
               </div>
-              <button class="cast-btn" onclick="window.open('${person.person.url}', '_blank')">View Profile</button>
             </div>
           `,
         )
