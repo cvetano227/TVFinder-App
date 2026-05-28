@@ -111,3 +111,32 @@ nextBtn.addEventListener("click", () => {
 });
 
 init();
+
+async function getCast(id) {
+  const res = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
+  const cast = await res.json();
+
+  console.log(cast);
+
+  const castContainer = document.getElementById("cast");
+  castContainer.innerHTML = `
+    <h2 class="section-title">Cast</h2>
+    <div class="cast-grid">
+      ${cast
+        .map(
+          (person) => `
+            <div class="cast-card">
+              <img src="${person.person.image?.medium || ""}" alt="${person.person.name}" />
+              <div class="cast-info">
+                <h3>${person.person.name}</h3>
+                <p>${person.character?.name || "Unknown Character"}</p>
+              </div>
+              <button class="cast-btn" onclick="window.open('${person.person.url}', '_blank')">View Profile</button>
+            </div>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
+}
+getCast(id);

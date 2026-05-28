@@ -170,9 +170,10 @@ body {
 
 .season-title {
   font-size: 20px;
-  margin-bottom: 18px;
+  margin-bottom: 32px;
   padding-left: 12px;
   border-left: 4px solid #d72638;
+  font-weight: 600;
 }
 
 /* GRID */

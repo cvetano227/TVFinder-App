@@ -10,6 +10,7 @@ async function getShows() {
 
   allShows = shows;
   renderShows(allShows);
+  console.log(allShows);
 }
 
 function renderShows(shows) {
