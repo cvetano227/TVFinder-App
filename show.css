@@ -376,3 +376,23 @@ body {
 .btn:active {
   transform: translateY(0);
 }
+@media (max-width: 768px) {
+  .show-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .show-poster img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .show-info {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}

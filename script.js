@@ -97,3 +97,46 @@ searchInput.addEventListener("keydown", (e) => {
 });
 
 getShows();
+let currentPage = 0;
+const pageSize = 50;
+
+const loadMoreBtn = document.getElementById("load-more");
+
+function getVisibleShows() {
+  return allShows.slice(0, (currentPage + 1) * pageSize);
+}
+
+const originalRender = renderShows;
+
+renderShows = function (shows) {
+  originalRender(shows);
+  updateLoadMore();
+};
+
+function updateLoadMore() {
+  const maxPages = Math.ceil(allShows.length / pageSize);
+
+  if (currentPage >= maxPages - 1) {
+    loadMoreBtn.style.display = "none";
+  } else {
+    loadMoreBtn.style.display = "inline-block";
+  }
+}
+
+loadMoreBtn.addEventListener("click", () => {
+  currentPage++;
+  renderShows(getVisibleShows());
+});
+
+const btn = document.createElement("button");
+btn.id = "back-to-top";
+btn.innerText = "↑ Top";
+document.body.appendChild(btn);
+
+btn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+window.addEventListener("scroll", () => {
+  btn.classList.toggle("show", window.scrollY > 400);
+});
