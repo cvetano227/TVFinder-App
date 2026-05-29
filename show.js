@@ -38,7 +38,6 @@ function renderShow(show) {
         <p>
           ${show.summary ? show.summary.replace(/<[^>]*>/g, "") : "No description available."}
         </p>
-
         <a class="watch-btn" href="${show.officialSite || "#"}" target="_blank">
           Watch / Official Site
         </a>

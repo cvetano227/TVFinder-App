@@ -88,7 +88,7 @@ body {
 
   display: flex;
   gap: 30px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .show-poster img {
@@ -99,12 +99,12 @@ body {
 
 .show-info {
   max-width: 750px;
-
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
-
   min-width: 0;
+  height: 100%;
 }
 
 .show-info h2 {
@@ -117,12 +117,14 @@ body {
   gap: 15px;
   font-size: 14px;
   opacity: 0.8;
+  margin-bottom: 12px;
 }
 
 .show-info p {
   line-height: 1.6;
   opacity: 0.8;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 /* ================= WATCH BUTTON ================= */
