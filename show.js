@@ -97,25 +97,9 @@ function renderEpisodes(episodes) {
   });
 }
 
-async function init() {
-  const show = await getShowData(id);
-  renderShow(show);
-
-  const episodes = await getEpisodes(id);
-  renderEpisodes(episodes);
-}
-
-nextBtn.addEventListener("click", () => {
-  window.location.href = `show.html?id=${Number(id) + 1}`;
-});
-
-init();
-
 async function getCast(id) {
   const res = await fetch(`https://api.tvmaze.com/shows/${id}/cast`);
   const cast = await res.json();
-
-  console.log(cast);
 
   const castContainer = document.getElementById("cast");
   castContainer.innerHTML = `
@@ -129,7 +113,7 @@ async function getCast(id) {
               <div class="cast-info">
                 <h3>${person.person.name}</h3>
                 <p>${person.character?.name || "Unknown Character"}</p>
-                <a class="btn cast-btn" onclick="window.open('${person.person.url}', '_blank')">View Profile</a>
+                <a class="btn cast-btn" href="${person.person.url}" target="_blank">View Profile</a>
               </div>
             </div>
           `,
@@ -138,4 +122,29 @@ async function getCast(id) {
     </div>
   `;
 }
-getCast(id);
+
+async function init() {
+  try {
+    const show = await getShowData(id);
+    renderShow(show);
+  } catch {
+    showContainer.innerHTML = `<p style="color:white; padding:20px;">Failed to load show data.</p>`;
+    return;
+  }
+
+  try {
+    const [episodes] = await Promise.all([
+      getEpisodes(id),
+      getCast(id),
+    ]);
+    renderEpisodes(episodes);
+  } catch {
+    episodesList.innerHTML = `<p style="color:white;">Failed to load episodes.</p>`;
+  }
+}
+
+nextBtn.addEventListener("click", () => {
+  window.location.href = `show.html?id=${Number(id) + 1}`;
+});
+
+init();

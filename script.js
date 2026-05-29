@@ -5,11 +5,15 @@ const searchButton = document.querySelector(".hero-actions button");
 let allShows = [];
 
 async function getShows() {
-  const response = await fetch("https://api.tvmaze.com/shows");
-  const shows = await response.json();
+  try {
+    const response = await fetch("https://api.tvmaze.com/shows");
+    const shows = await response.json();
 
-  allShows = shows;
-  renderShows(allShows);
+    allShows = shows;
+    renderShows(getVisibleShows());
+  } catch {
+    showsContainer.innerHTML = `<p style="color:white; padding:20px;">Failed to load shows. Check your connection and try again.</p>`;
+  }
 }
 
 function renderShows(shows) {
